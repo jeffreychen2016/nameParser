@@ -4,6 +4,7 @@
 // Print the name one letter at a time with spaces between each letter
 
 using System;
+using NameParser.Names;
 
 namespace NameParser
 {
@@ -11,44 +12,24 @@ namespace NameParser
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Enter your first name");
-            var firstName = Console.ReadLine();
+            //version 1
+            // get first name and print it out
+            //var firstName = new FirstName(); // instanciate the class
+            //var enteredFirstName = firstName.GetFirstName();
+            //firstName.PrintFirstName(enteredFirstName);
 
-            foreach (var letter in firstName)
-            {
-                Console.WriteLine(letter);
-            }
+            var firstName = new FirstName();
+            firstName.GetFirstName();
+            firstName.PrintFirstName();
 
-            Console.WriteLine("Enter your last name");
-            var lastName = Console.ReadLine();
-            var lastNameWithSpaces = "";
 
-            foreach (var letter in lastName.ToUpper())
-            {
-                lastNameWithSpaces += letter + " ";
-            }
+            var lastName = new LastName();
+            lastName.GetLastName();
+            lastName.PrinLastName();
 
-            Console.WriteLine(lastNameWithSpaces.Trim());
-
-            //
-            Console.WriteLine("Do you have a middle name? (y/n)");
-            var hasMiddleName = Console.ReadLine();
-
-            if (hasMiddleName == "y")
-            {
-                Console.WriteLine("Enter your middle name");
-                var middleName = Console.ReadLine();
-
-                var i = 0;
-                foreach (var letter in middleName)
-                {
-                    Console.WriteLine(letter.ToString().PadLeft(++i));
-                }
-            }
-            else
-            {
-                Console.WriteLine("KKKK");
-            }
+            var middleName = new MiddleName();
+            middleName.GetMiddleName(firstName.Name);
+            middleName.PrintMiddleName();
 
             Console.WriteLine("Exit");
             Console.ReadLine();
